@@ -1,0 +1,17 @@
+{
+	"name": "slake-lunch",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "Alexandre Joly <alexandre.joly@kilokilo.ch>",
+	"license": "MIT",
+	"scripts": {
+		"start": "vercel dev",
+		"deploy": "vercel deploy --prod"
+	},
+	"devDependencies": {
+		"vercel": "^28.5.3"
+	},
+	"dependencies": {
+		"@vercel/fetch": "^6.2.0"
+	}
+}
