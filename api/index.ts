@@ -32,10 +32,29 @@ const getRestaurants = async () => {
 	return restaurants
 }
 
-const createSlackresponse = (restaurant: Place) => {
+const createSlackresponse = ({ place_id, name, icon, rating }: Place) => {
+	// return {
+	// 	response_type: 'in_channel',
+	// 	text: `Let's eat at ${restaurant.name}`,
+	// }
+
 	return {
 		response_type: 'in_channel',
-		text: `Let's eat at ${restaurant.name}`,
+		blocks: [
+			{
+				type: 'section',
+				block_id: 'section567',
+				text: {
+					type: 'mrkdwn',
+					text: `Let's eat at <https://www.google.com/maps/place/?q=place_id:${place_id}|${name}>`,
+				},
+				// accessory: {
+				// 	type: 'image',
+				// 	image_url: `${icon}`,
+				// 	alt_text: `${name}`,
+				// },
+			},
+		],
 	}
 }
 
