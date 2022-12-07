@@ -5,10 +5,23 @@ const fetch = createFetch()
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY!
 
+let lastPlaces: string[] = []
+
 export default async (_req: VercelRequest, res: VercelResponse) => {
 	const restaurants = await getRestaurants()
+	let randomRestaurant: Place
+	const maxRetry = 5
+	let retry = 1
 
-	const randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)]
+	do {
+		randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)]
+		++retry
+	} while ((!randomRestaurant.place_id || lastPlaces.includes(randomRestaurant.place_id)) && retry <= maxRetry)
+
+	if (randomRestaurant.place_id) {
+		lastPlaces.push(randomRestaurant.place_id)
+		lastPlaces = lastPlaces.slice(-5)
+	}
 
 	return res.json(createSlackresponse(randomRestaurant))
 }
@@ -19,7 +32,7 @@ const getRestaurants = async () => {
 	const params = new URLSearchParams({
 		type: 'restaurant',
 		key: GOOGLE_API_KEY,
-		radius: '1500',
+		radius: '1000',
 		location: '47.38435474299604,8.528954185206228',
 		opennow: 'true',
 	})
