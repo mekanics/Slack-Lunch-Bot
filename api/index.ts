@@ -32,7 +32,7 @@ const getRestaurants = async () => {
 	const params = new URLSearchParams({
 		type: 'restaurant',
 		key: GOOGLE_API_KEY,
-		radius: '1000',
+		radius: '500',
 		location: '47.38435474299604,8.528954185206228',
 		opennow: 'true',
 	})
