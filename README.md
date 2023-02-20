@@ -25,5 +25,5 @@
   - Request Url: <your-vercel-app-url>/api
   - Short description: Choose a place to eat.
   - And 'Save'
-- In the menu `OAuth & Permissions` go to `Scopes` and add `commands`
-- Back on the `Basic Information` Page got to `Install your app` and press `Install to workspace`
+- In the menu `OAuth & Permissions` go to `Scopes` and add `commands` to the scopes
+- Back on the `Basic Information` page go to `Install your app` and press `Install to workspace`
