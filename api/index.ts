@@ -45,7 +45,7 @@ const getRestaurants = async () => {
 	return restaurants
 }
 
-const createSlackresponse = ({ place_id, name, icon, rating }: Place) => {
+const createSlackresponse = ({ place_id, name }: Place) => {
 	// return {
 	// 	response_type: 'in_channel',
 	// 	text: `Let's eat at ${restaurant.name}`,
